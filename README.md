@@ -1,1 +1,1 @@
-Dashboard Interactivo
+Dashboard de clima
