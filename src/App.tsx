@@ -12,7 +12,7 @@ function App() {
          </Grid>
 
          {/* Alertas */}
-         <Grid size={{ xs: 12, md: 12 }}container justifyContent="right" alignItems="center">
+         <Grid size={{ xs: 12, md: 12 }} sx={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
             <AlertUI config={{ type: 'success', description: 'No se preveen lluvias' }} />
          </Grid>
 
