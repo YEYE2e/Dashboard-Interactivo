@@ -2,14 +2,16 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Select, { type SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import { useState } from 'react';
 
-export default function SelectorUI() {
+interface SelectorUIProps {
+   selectedCity: string;
+   onCityChange: (city: string) => void;
+}
 
-   const [cityInput, setCityInput] = useState('');
+export default function SelectorUI({ selectedCity, onCityChange }: SelectorUIProps) {
 
    const handleChange = (event: SelectChangeEvent<string>) => {
-      setCityInput(event.target.value);
+      onCityChange(event.target.value);
    };
 
    return (
@@ -19,7 +21,7 @@ export default function SelectorUI() {
             <Select
                labelId="city-select-label"
                id="city-simple-select"
-               value={cityInput}
+               value={selectedCity}
                label="Ciudad"
                onChange={handleChange}
             >
@@ -30,12 +32,11 @@ export default function SelectorUI() {
                <MenuItem value={"cuenca"}>Cuenca</MenuItem>
             </Select>
          </FormControl>
-         {cityInput && (
+         {selectedCity && (
             <p style={{ marginTop: '10px' }}>
-               Información del clima en <span style={{ fontWeight: 'bold', textTransform: 'capitalize' }}>{cityInput}</span>
+               Información del clima en <span style={{ fontWeight: 'bold', textTransform: 'capitalize' }}>{selectedCity}</span>
             </p>
          )}
       </>
    );
 }
-
